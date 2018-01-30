@@ -4,7 +4,7 @@
   <TITLE> 로그인 </TITLE>
 <link href="style.css" rel="stylesheet"
       type="text/css">
-<SCRIPT LANGUAGE="JavaScript" src="script.js">
+<SCRIPT LANGUAGE="JavaScript" src="script.js?ver=1">
 </SCRIPT>
  </HEAD>
 
@@ -14,8 +14,9 @@
   <br><br><br>
   <%//회원만 볼수있다면 - // 로그인이 되어있는지 확인
 
-String mem_id = (String)session.getAttribute("idkey") ;
+String mem_id = (String)session.getAttribute("idkey");
 System.out.println(mem_id+"로 로그인되었습니다.");
+
 %>
 <%
 if(mem_id!=null){
@@ -23,9 +24,9 @@ if(mem_id!=null){
 
 	<b><%=mem_id%>님 환영합니다.</b>
 	<a href="MemberUpdate.jsp">회원수정</a>
-	<a href="#">회원탈퇴</a>
-	<%if(mem_id.equals("admin")){ %>
-	<a href="#">회원리스트</a>
+	<a href="DelCheckForm.jsp?mem_id=<%=session.getAttribute("idkey")%>">회원탈퇴</a>
+	<%if(mem_id.equals("gondolie")){ %>
+	<a href="MemberList.jsp?page_num=0">회원리스트</a>
 	<%} %>
 	<a href="Logout.jsp">Logout</a>
 	<%

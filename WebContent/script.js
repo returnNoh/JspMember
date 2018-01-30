@@ -14,7 +14,7 @@ function loginCheck(){
 
 function memberReg(){
 	//document.location.href="경로/파일명" 
-	document.location="Register.jsp";
+	document.location="agreement.jsp";
 	
 }
 

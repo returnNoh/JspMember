@@ -239,7 +239,7 @@ public class MemberDAO { // DB연결
 					PreparedStatement pstmt = null;
 					boolean check = false;
 					
-					String sql = "delete from member where id="+mem_id;
+					String sql = "delete from member where id='"+mem_id+"'";
 					try {
 						con=pool.getConnection();
 						pstmt=con.prepareStatement(sql);
@@ -256,16 +256,22 @@ public class MemberDAO { // DB연결
 	
 	//8) 회원리스트를 보여주는 메소드 
 				
-				public ArrayList<MemberDTO> member_list(String mem_id) {
+				public ArrayList<MemberDTO> member_list(int page_now,int page_count,int list_count) {
 					
 					Connection con = null;
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					boolean check = false;
 					ArrayList<MemberDTO> member_list = new ArrayList<MemberDTO>();
-					
-					
-					String sql = "select * from member where id="+mem_id;
+					int first=1;  // rownum 은 1번부터 시작.
+					int last=page_count*page_now;
+					if(page_now!=1) {
+					 first = page_count*(page_now-1);
+					}
+					System.out.println(first);
+
+					String sql = "select * from member where rownum>="+first+" and rownum<"+last;
+					System.out.println(sql);
 					try {
 						con=pool.getConnection();
 						pstmt=con.prepareStatement(sql);

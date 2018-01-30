@@ -12,7 +12,6 @@
 
 <jsp:useBean id="save" class="user.MemberDTO"/>
 <jsp:setProperty property="*" name="save"/>
-<jsp:getProperty property="mem_id" name="save"/>
 
 <jsp:useBean id="info" class = "user.MemberDAO"/>
 
@@ -23,16 +22,20 @@
 	System.out.println(result);
 	if(result==true){
 		%>
-		<h1>회원정보 수정 완료!</h1>
+		<script>
+		alert("수정성공!");
+		location.href="Login.jsp"
+		</script>
 		<%
-		
 	}else{
 		%>
-		<h1>회원정보 수정 오류</h1>
+		<script>
+		alert("수정실패");
+		location.href="Login.jsp"
+		</script>
 		<%
 	}
 		%>
-<a href="Login.jsp">마이페이지로</a>
 </center>
 </body>
 </html>

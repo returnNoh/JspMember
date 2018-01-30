@@ -37,7 +37,7 @@ function setting(){
           </tr>
           <tr> 
             <td width="16%">아이디</td>
-            <td width="57%"> <input type="text" name="mem_id" size="15" readonly="readonly">
+            <td width="57%"> <input type="text" name="mem_id" size="15" readonly="readonly"></td>
 		      
             <td width="27%">아이디를 적어 주세요.</td>
           </tr>
