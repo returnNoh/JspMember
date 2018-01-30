@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="style.css" rel="stylesheet" type="text/css">
-<title>DTO페이지</title>
+<title>회원가입확인</title>
 </head>
 <body>
 <%request.setCharacterEncoding("UTF-8"); %>
@@ -16,7 +16,7 @@
 
 <jsp:useBean id="info" class = "user.MemberDAO"/>
 
-
+<center>
 		<%
 	
 	boolean result=info.member_regist(save);
@@ -33,5 +33,6 @@
 	}
 		%>
 <a href="Login.jsp">로그인 페이지로</a>
+</center>
 </body>
 </html>

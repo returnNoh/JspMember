@@ -19,7 +19,7 @@ String mem_zipcode = request.getParameter("mem_zipcode");
 String mem_address = request.getParameter("mem_address");
 String mem_job = request.getParameter("mem_job"); */
 %>
-<jsp:useBean id="save" class="user.MemberDTO" scope="page"/>
+<jsp:useBean id="save" class="user.MemberDTO"/>
 <jsp:setProperty property="*" name="save"/>
 
 

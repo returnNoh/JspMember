@@ -128,6 +128,9 @@ public class MemberDAO { // DB연결
 					String sql = "insert into member values(?,?,?,?,?,?,?,?)";
 					try {
 						con=pool.getConnection();
+						
+						con.setAutoCommit(false); // 트랜잭션 시작 설정 디폴트가 true라서 따로 설정하지않으면 바로바로 commit 됨.
+						
 						pstmt=con.prepareStatement(sql);
 						pstmt.setString(1, mem.getMem_id());
 						pstmt.setString(2, mem.getMem_passwd());
@@ -138,7 +141,12 @@ public class MemberDAO { // DB연결
 						pstmt.setString(7, mem.getMem_address());
 						pstmt.setString(8, mem.getMem_job());
 						
-						check = pstmt.execute();
+						int check2 = pstmt.executeUpdate();
+						if(check2>0) {
+							check=true;
+						}
+						
+						con.commit(); // 트랜잭션 수동 commit
 						
 					}catch(Exception e) {
 						System.out.println("회원가입 실패"+e);
@@ -169,7 +177,10 @@ public class MemberDAO { // DB연결
 						pstmt.setString(7, mem.getMem_address());
 						pstmt.setString(8, mem.getMem_job());
 						
-						check = pstmt.execute();
+						int check2 = pstmt.executeUpdate();
+						if(check2>0) {
+							check=true;
+						}
 						
 					}catch(Exception e) {
 						System.out.println("정보수정 실패"+e);

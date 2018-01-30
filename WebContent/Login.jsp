@@ -22,7 +22,7 @@ if(mem_id!=null){
 	%>
 
 	<b><%=mem_id%>님 환영합니다.</b>
-	<a href="#">회원수정</a>
+	<a href="MemberUpdate.jsp">회원수정</a>
 	<a href="#">회원탈퇴</a>
 	<%if(mem_id.equals("admin")){ %>
 	<a href="#">회원리스트</a>
