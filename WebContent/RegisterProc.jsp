@@ -9,15 +9,20 @@
 
 <%
 		request.setCharacterEncoding("UTF-8");
-String mem_id = request.getParameter("mem_id");
+
+/* String mem_id = request.getParameter("mem_id");
 String mem_passwd = request.getParameter("mem_passwd");
 String mem_name = request.getParameter("mem_name");
 String mem_email = request.getParameter("mem_email");
 String mem_phone = request.getParameter("mem_phone");
 String mem_zipcode = request.getParameter("mem_zipcode");
 String mem_address = request.getParameter("mem_address");
-String mem_job = request.getParameter("mem_job");
+String mem_job = request.getParameter("mem_job"); */
 %>
+<jsp:useBean id="save" class="user.MemberDTO" scope="page"/>
+<jsp:setProperty property="*" name="save"/>
+
+
 
 <title>회원가입확인</title>
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -34,46 +39,46 @@ String mem_job = request.getParameter("mem_job");
           </tr>
           <tr> 
             <td width="16%">아이디</td>
-            <td width="57%"> <input type="text" name="mem_id" size="15" value="<%=mem_id%>" readonly="readonly"></td>
+            <td width="57%"> <input type="text" name="mem_id" size="15" value="<jsp:getProperty property="mem_id" name="save"/>" readonly="readonly"></td>
         	</tr>
         	
           <tr> 
             <td>이름</td>
-            <td> <input type="text" name="mem_name" size="15" value="<%=mem_name%>" readonly="readonly"> </td>
+            <td> <input type="text" name="mem_name" size="15" value="<jsp:getProperty property="mem_name" name="save"/>" readonly="readonly"> </td>
           </tr>
           
           <tr> 
             <td>이메일</td>
-            <td> <input type="text" name="mem_email" size="27" value="<%=mem_email%>" readonly="readonly"> </td>
+            <td> <input type="text" name="mem_email" size="27" value="<jsp:getProperty property="mem_email" name="save"/>" readonly="readonly"> </td>
           </tr>
           
           <tr>  
             <td>전화번호</td>
-            <td> <input type="text" name="mem_phone" size="20" value="<%=mem_phone%>" readonly="readonly"> </td>
+            <td> <input type="text" name="mem_phone" size="20" value="<jsp:getProperty property="mem_phone" name="save"/>" readonly="readonly"> </td>
           </tr>
           
 		  <tr>  
             <td>우편번호</td>
-            <td> <input type="text" name="mem_zipcode" size="7" value="<%=mem_zipcode%>" readonly="readonly"></td>
+            <td> <input type="text" name="mem_zipcode" size="7" value="<jsp:getProperty property="mem_zipcode" name="save"/>" readonly="readonly"></td>
           </tr>
           
 		  <tr>  
             <td>주소</td>
-            <td><input type="text" name="mem_address" size="70" value="<%=mem_address%>" readonly="readonly"></td>
+            <td><input type="text" name="mem_address" size="70" value="<jsp:getProperty property="mem_address" name="save"/>" readonly="readonly"></td>
           </tr>
           
 		  <tr>  
             <td>직업</td>
-            <td><input type="text" name=mem_job size="10" value="<%=mem_job%>" readonly="readonly"></td>
+            <td><input type="text" name=mem_job size="10" value="<jsp:getProperty property="mem_job" name="save"/>" readonly="readonly"></td>
           </tr>
           
-          <input type="hidden" name=mem_passwd value="<%=mem_passwd%>">
           
+          <input type="hidden" name=mem_passwd value="<jsp:getProperty property="mem_passwd" name="save"/>">
           <tr> 
             <td colspan="3" align="center"> 
              <input type="submit" value="확인완료"> 
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-             <input type="reset" value="다시쓰기" onclick="hystory.back()"> 
+             <input type="reset" value="다시쓰기" onclick="JavaScript:history.back()"> 
             </td>
           </tr>
         </form>

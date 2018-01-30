@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>zipcheck</title>
 </head>
 <body bgcolor="#FFFFCC">
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -52,6 +52,7 @@ function setcode(a,b,c,d,e){
 	opener.document.regForm.mem_zipcode.value=a;
 	code+=b+" "+c+" "+d+" "+e;
 	opener.document.regForm.mem_address.value=code;
+	opener.document.regForm.mem_zipcode.readonly="readonly";
 	opener.document.regForm.mem_address.focus();
 	
 	self.close();

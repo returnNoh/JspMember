@@ -20,7 +20,7 @@
             <td width="16%">아이디</td>
             <td width="57%"> <input type="text" name="mem_id" size="15">
 		      <input type="button" value="ID중복확인" 
-       			onClick="idCheck(this.form.mem_id.value)"></td>
+       			onClick="idCheck(this.form.mem_id.value)" readonly="readonly"></td>
             <td width="27%">아이디를 적어 주세요.</td>
           </tr>
           <tr> 
@@ -64,7 +64,7 @@
             <td><select name=mem_job>
  					<option value="0">선택하세요.
  					<option value="회사원">회사원
- 					<option value="프로그래머">프로그래머
+ 					<option value="연구전문직">연구전문직
  					<option value="교수학생">교수학생
  					<option value="일반자영업">일반자영업
  					<option value="공무원">공무원
