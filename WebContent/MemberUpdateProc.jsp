@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="style.css" rel="stylesheet" type="text/css">
+<title>회원가입확인</title>
+</head>
+<body>
+<%request.setCharacterEncoding("UTF-8"); %>
+
+<jsp:useBean id="save" class="user.MemberDTO"/>
+<jsp:setProperty property="*" name="save"/>
+<jsp:getProperty property="mem_id" name="save"/>
+
+<jsp:useBean id="info" class = "user.MemberDAO"/>
+
+<center>
+		<%
+	
+	boolean result=info.member_modify(save);
+	System.out.println(result);
+	if(result==true){
+		%>
+		<h1>회원정보 수정 완료!</h1>
+		<%
+		
+	}else{
+		%>
+		<h1>회원정보 수정 오류</h1>
+		<%
+	}
+		%>
+<a href="Login.jsp">마이페이지로</a>
+</center>
+</body>
+</html>

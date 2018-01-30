@@ -164,18 +164,18 @@ public class MemberDAO { // DB연결
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					boolean check = false;
-					String sql = "update member set id=?,passwd=?,email=?,phone=?,zipcode=?,address=?,job=? where name ="+mem.getMem_name();
+					String sql = "update member set name=?,passwd=?,e_mail=?,phone=?,zipcode=?,address=?,job=? where id =?";
 					try {
 						con=pool.getConnection();
 						pstmt=con.prepareStatement(sql);
-						pstmt.setString(1, mem.getMem_id());
+						pstmt.setString(1, mem.getMem_name());
 						pstmt.setString(2, mem.getMem_passwd());
-						pstmt.setString(3, mem.getMem_name());
-						pstmt.setString(4, mem.getMem_email());
-						pstmt.setString(5, mem.getMem_phone());
-						pstmt.setString(6, mem.getMem_zipcode());
-						pstmt.setString(7, mem.getMem_address());
-						pstmt.setString(8, mem.getMem_job());
+						pstmt.setString(3, mem.getMem_email());
+						pstmt.setString(4, mem.getMem_phone());
+						pstmt.setString(5, mem.getMem_zipcode());
+						pstmt.setString(6, mem.getMem_address());
+						pstmt.setString(7, mem.getMem_job());
+						pstmt.setString(8, mem.getMem_id());
 						
 						int check2 = pstmt.executeUpdate();
 						if(check2>0) {
@@ -200,16 +200,17 @@ public class MemberDAO { // DB연결
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					boolean check = false;
-					MemberDTO member_info = new MemberDTO();
+					MemberDTO member_info = null;
 					
-					String sql = "select * from member where id="+mem_id;
+					String sql = "select * from member where id='"+mem_id+"'";
 					try {
 						con=pool.getConnection();
 						pstmt=con.prepareStatement(sql);
 						
 						System.out.println(sql);
 						System.out.println(rs=pstmt.executeQuery());
-						
+						if(rs.next()) {
+						member_info = new MemberDTO();
 						member_info.setMem_id(rs.getString(1));
 						member_info.setMem_passwd(rs.getString(2));
 						member_info.setMem_name(rs.getString(3));
@@ -218,7 +219,7 @@ public class MemberDAO { // DB연결
 						member_info.setMem_zipcode(rs.getString(6));
 						member_info.setMem_address(rs.getString(7));
 						member_info.setMem_job(rs.getString(8));
-						
+						}
 						
 					}catch(Exception e) {
 						System.out.println("정보가져오기 실패"+e);

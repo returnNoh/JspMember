@@ -1,26 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+    pageEncoding="UTF-8" import="user.*,java.util.*" %>
 <html>
 <head>
-<title>회원가입</title>
+<title>회원수정</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="script.js?ver=2"></script>
+<script>
+<%
+MemberDAO dao = new MemberDAO();
+MemberDTO dto = dao.member_info((String)session.getAttribute("idkey"));
+
+%>
+function setting(){
+	document.regForm.mem_id.value="<%=dto.getMem_id()%>";
+	document.regForm.mem_passwd.value="<%=dto.getMem_passwd()%>";
+	document.regForm.mem_repasswd.value="<%=dto.getMem_passwd()%>";
+	document.regForm.mem_name.value="<%=dto.getMem_name()%>";
+	document.regForm.mem_email.value="<%=dto.getMem_email()%>";
+	document.regForm.mem_phone.value="<%=dto.getMem_phone()%>";
+	document.regForm.mem_zipcode.value="<%=dto.getMem_zipcode()%>";
+	document.regForm.mem_address.value="<%=dto.getMem_address()%>";
+	document.regForm.mem_job.value="<%=dto.getMem_job()%>";
+	
+}
+</script>
 </head>
-<body bgcolor="#996600" onLoad="regForm.mem_id.focus()">
+<body bgcolor="#996600" onLoad="setting()">
 <br><br>
 <table align="center" border="0" cellspacing="0" cellpadding="5" >
   <tr> 
     <td align="center" valign="middle" bgcolor="#FFFFCC"> 
       <table border="1" cellspacing="0" cellpadding="2"  align="center">
-        <form name="regForm" method="post" action="RegisterProc.jsp">
+        <form name="regForm" method="post" action="MemberUpdateProc.jsp">
           <tr align="center" bgcolor="#996600"> 
             <td colspan="3"><font color="#FFFFFF"><b>회원 가입</b></font></td>
           </tr>
           <tr> 
             <td width="16%">아이디</td>
-            <td width="57%"> <input type="text" name="mem_id" size="15">
-		      <input type="button" value="ID중복확인" 
-       			onClick="idCheck(this.form.mem_id.value)" readonly="readonly"></td>
+            <td width="57%"> <input type="text" name="mem_id" size="15" readonly="readonly">
+		      
             <td width="27%">아이디를 적어 주세요.</td>
           </tr>
           <tr> 
@@ -80,9 +98,9 @@
           </tr>
           <tr> 
             <td colspan="3" align="center"> 
-             <input type="button" value="회원가입"   onclick="inputCheck()"> 
+             <input type="button" value="정보 수정"   onclick="inputCheck()"> 
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-             <input type="reset" value="다시쓰기"> 
+             <input type="button" value="다시쓰기" onclick="setting()"> <input type="button" value="수정 취소"   onclick="history.back()">
             </td>
           </tr>
         </form>
